@@ -1,0 +1,72 @@
+- type: reagent
+  id: BurnTest
+  name: reagent-name-burntest
+  group: Medicine
+  desc: reagent-desc-burntest
+  physicalDesc: reagent-physical-desc-thick
+  flavor: syrupy
+  color: "#aa4308"
+  metabolisms:
+    Medicine:
+      metabolismRate: 2
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Heat: -4
+            Shock: -1
+            Cold: -1
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentThreshold
+          min: 11
+        damage:
+          types:
+            Slash: 1.5
+            Piercing: 1.5
+      - !type:ChemVomit
+        conditions:
+        - !type:ReagentThreshold
+          min: 11
+        probability: 0.25
+      - !type:Emote
+        conditions:
+        - !type:ReagentThreshold
+          min: 8
+        emote: Scream
+        probability: 0.25
+
+- type: reagent
+  id: BruteTest
+  name: reagent-name-brutetest
+  group: Medicine
+  desc: reagent-desc-brutetest
+  physicalDesc: reagent-physical-desc-thick
+  flavor: syrupy
+  color: "#aa4308"
+  metabolisms:
+    Medicine:
+      metabolismRate: 2
+      effects:
+      - !type:HealthChange
+        damage:
+          groups:
+            Brute: -4
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentThreshold
+          min: 11
+        damage:
+          types:
+            Cold: 2
+      - !type:ChemVomit
+        conditions:
+        - !type:ReagentThreshold
+          min: 11
+        probability: 0.25
+      - !type:Emote
+        conditions:
+        - !type:ReagentThreshold
+          min: 8
+        emote: Scream
+        probability: 0.25

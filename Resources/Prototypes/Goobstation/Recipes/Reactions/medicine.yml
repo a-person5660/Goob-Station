@@ -1,0 +1,19 @@
+- type: reaction
+  id: BurnTest
+  reactants:
+    Dermaline:
+      amount: 2
+    Omnizine:
+      amount: 2
+  products:
+    BurnTest: 1
+
+- type: reaction
+  id: BruteTest
+  reactants:
+    Bicaridine:
+      amount: 2
+    Omnizine:
+      amount: 2
+  products:
+    BurnTest: 1
