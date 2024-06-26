@@ -23,3 +23,195 @@ Entries:
       message: Re-added fire fighting remotes to atmos lockers.
   id: 6
   time: '2024-06-17T21:00:22.0000000+00:00'
+- author: Aidenkrz
+  changes:
+    - type: Fix
+      message: Remove items from chameleon items that were unintended.
+  id: 7
+  time: '2024-06-18T03:37:53.0000000+00:00'
+- author: Piras314
+  changes:
+    - type: Tweak
+      message: Emitters and containment field generators are now much cheaper!
+  id: 8
+  time: '2024-06-18T12:08:34.0000000+00:00'
+- author: Aidenkrz
+  changes:
+    - type: Tweak
+      message: Dwarves are now w i d e.
+  id: 9
+  time: '2024-06-18T12:09:05.0000000+00:00'
+- author: TooSillyFennec
+  changes:
+    - type: Add
+      message: >-
+        Headrevs now have syndicate encryption keys. Coordinate and plan a
+        strategy!
+    - type: Tweak
+      message: >-
+        Revs and survival chances have been swapped. Revs at a 10%, and survival
+        at 5%.
+  id: 10
+  time: '2024-06-18T12:12:08.0000000+00:00'
+- author: Aidenkrz
+  changes:
+    - type: Tweak
+      message: Port over all the textures from EE.
+  id: 11
+  time: '2024-06-18T12:23:41.0000000+00:00'
+- author: Piras314
+  changes:
+    - type: Tweak
+      message: >-
+        The telecrystal market has been flooded with telecrystals, increasing
+        prices and availability fivefold.
+  id: 12
+  time: '2024-06-18T12:29:26.0000000+00:00'
+- author: Aidenkrz
+  changes:
+    - type: Tweak
+      message: Space has suddenly become less dense (objects don't slow down in space)
+    - type: Remove
+      message: Moths are unable to move in space
+    - type: Tweak
+      message: Moths have way better control in zero gravity environments
+  id: 13
+  time: '2024-06-18T12:44:22.0000000+00:00'
+- author: Aidenkrz
+  changes:
+    - type: Tweak
+      message: Un-flatten dwarves.
+  id: 14
+  time: '2024-06-18T13:22:18.0000000+00:00'
+- author: Aidenkrz
+  changes:
+    - type: Tweak
+      message: >-
+        The syndicate are now provided with 100 TC to cope with the inflating
+        prices.
+  id: 15
+  time: '2024-06-19T07:25:14.0000000+00:00'
+- author: Misandry
+  changes:
+    - type: Add
+      message: Traitors are now more likely to have conflicting objectives
+  id: 16
+  time: '2024-06-19T07:25:56.0000000+00:00'
+- author: Teapug
+  changes:
+    - type: Tweak
+      message: >-
+        Nanotrasen in their all knowing wisdom has made NTR's backpack not ugly
+        as shit! Rejoice!
+  id: 17
+  time: '2024-06-19T07:28:06.0000000+00:00'
+- author: PoTeletubby
+  changes:
+    - type: Tweak
+      message: planet command generates an ore layer
+  id: 18
+  time: '2024-06-20T03:33:02.0000000+00:00'
+- author: a-person5660
+  changes:
+    - type: Add
+      message: >-
+        durathread armour, web vest and jumpsuit is now craftable in the clothes
+        printer when emagged
+  id: 19
+  time: '2024-06-20T03:35:55.0000000+00:00'
+- author: Aidenkrz
+  changes:
+    - type: Add
+      message: New lobby music!
+  id: 20
+  time: '2024-06-21T01:34:42.0000000+00:00'
+- author: Piras314
+  changes:
+    - type: Tweak
+      message: Durathread armour is no longer extremely overpowered.
+  id: 21
+  time: '2024-06-22T12:28:57.0000000+00:00'
+- author: Piras314
+  changes:
+    - type: Tweak
+      message: Mass sabotage is not allowed before 30 minutes into the round.
+  id: 22
+  time: '2024-06-22T12:46:03.0000000+00:00'
+- author: whateverusername0
+  changes:
+    - type: Add
+      message: Supermatter now shoots out lightning bolts.
+    - type: Add
+      message: You will now have to activate the SM by making it collide with anything.
+    - type: Add
+      message: Supermatter Tesla Delamination.
+    - type: Add
+      message: New traitor objective - get a piece of the supermatter.
+    - type: Remove
+      message: 'Fland: Singularity platform.'
+    - type: Add
+      message: 'Fland: Supermatter chamber.'
+    - type: Tweak
+      message: 'Fland: Moved TEG near the SM chambere.'
+  id: 23
+  time: '2024-06-22T13:35:28.0000000+00:00'
+- author: JoeHammad
+  changes:
+    - type: Tweak
+      message: Improved EMT belt sprite
+  id: 24
+  time: '2024-06-23T12:10:54.0000000+00:00'
+- author: whateverusername0
+  changes:
+    - type: Add
+      message: 'Bagel: Supermatter Engine'
+  id: 25
+  time: '2024-06-23T14:52:19.0000000+00:00'
+- author: JoeHammad1844
+  changes:
+    - type: Tweak
+      message: >-
+        The EMT belt has received a full resprite to be more in line with the
+        art style
+  id: 26
+  time: '2024-06-25T04:22:40.0000000+00:00'
+- author: Aidenkrz
+  changes:
+    - type: Tweak
+      message: Survival boxes are useful again.
+  id: 27
+  time: '2024-06-25T14:52:46.0000000+00:00'
+- author: a-person5660
+  changes:
+    - type: Tweak
+      message: >-
+        cloning costs 30% more but non SSD bodies are now able to be recycled
+        into biomass.
+  id: 28
+  time: '2024-06-26T05:12:49.0000000+00:00'
+- author: whateverusername0
+  changes:
+    - type: Add
+      message: Supermatter now has a warp point for ghosts.
+    - type: Add
+      message: Bagel now has supermatter.
+    - type: Add
+      message: Oasis now had supermatter.
+    - type: Tweak
+      message: Changed SM chamber tiles to plating on fland.
+    - type: Fix
+      message: SM guidebook entry.
+  id: 29
+  time: '2024-06-26T05:50:36.0000000+00:00'
+- author: Aidenkrz
+  changes:
+    - type: Add
+      message: More sprites for the survival boxes, because why not?
+  id: 30
+  time: '2024-06-26T07:38:16.0000000+00:00'
+- author: Aidenkrz
+  changes:
+    - type: Add
+      message: More custom music for the lobby and jukebox!
+  id: 31
+  time: '2024-06-26T07:42:33.0000000+00:00'

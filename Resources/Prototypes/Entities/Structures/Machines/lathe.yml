@@ -196,6 +196,8 @@
       - WeaponCapacitorRechargerCircuitboard
       - HandheldStationMap
       - ClothingHeadHatWelding
+      - WetFloorSign
+      - ClothingHeadHatCone
   - type: EmagLatheRecipes
     emagStaticRecipes:
       - BoxLethalshot
@@ -1127,6 +1129,9 @@
       - ClothingOuterWinterCentcom
       - ClothingOuterWinterSyndie
       - ClothingOuterWinterSyndieCap
+      - ClothingOuterVestWebDurathread # Goobstation - adding durathread armoured clothing
+      - ClothingOuterArmourDurathread # Goobstation - adding durathread armoured clothing
+      - ClothingUniformJumpsuitDurathread # Goobstation - adding durathread armoured clothing
   - type: MaterialStorage
     whitelist:
       tags:
