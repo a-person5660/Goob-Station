@@ -178,7 +178,7 @@
       - !type:HealthChange
         damage:
           groups:
-            Burn: -8
+            Burn: -8 # Goob Station - Generic Chemistry Buff
             Brute: -8
             Toxin: -2
           types:
