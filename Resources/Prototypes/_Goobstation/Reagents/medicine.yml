@@ -39,3 +39,36 @@
           - !type:Temperature
             min: 263.15
           amount: -50000
+
+- type: reagent
+  id: Hypoxadone
+  name: reagent-name-hypoxadone
+  group: Medicine
+  desc: reagent-desc-hypoxadone
+  physicalDesc: reagent-physical-desc-fizzy
+  flavor: medicine
+  color: "#00f7ff"
+  plantMetabolism:
+  - !type:PlantAdjustToxins
+    amount: -5
+  - !type:PlantAdjustHealth
+    amount: 5
+  - !type:PlantCryoxadone {}
+  metabolisms:
+    Medicine:
+      metabolismRate: 1 # metabolises faster so theres a reason to take time to put people in cryo and cool them
+      effects:
+        - !type:ModifyBloodLevel
+          amount: 2
+        - !type:HealthChange
+          conditions:
+          - !type:Temperature
+            max: 213.0
+          damage:
+          # todo scale with temp like SS13
+            groups:
+              Airloss: -8 # should heal extrodinarily well but not any adv types of damage like caustic/genetic
+              Brute: -10
+              Burn: -10
+              Toxin: -6
+

@@ -1,0 +1,11 @@
+- type: reaction
+  id: Hypoxadone
+  reactants:
+    Cryoxadone:
+      amount: 2
+    Hydroxide:
+      amount: 2
+    Plasma:
+      amount: 1
+  products:
+    Hypoxadone: 4
