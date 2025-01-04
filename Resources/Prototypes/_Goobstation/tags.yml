@@ -132,3 +132,9 @@
 
 - type: Tag
   id: WeaponPistolDualetta
+
+- type: Tag
+  id: MilitaryPowerCellSMG
+
+- type: Tag
+  id: MilitaryPowerCellBackpack

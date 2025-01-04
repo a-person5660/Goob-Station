@@ -1,0 +1,137 @@
+- type: entity
+  id: BaseMilitaryPowerCell
+  abstract: true
+  parent: BaseItem
+  components:
+  - type: Item
+    storedRotation: -90
+  - type: Battery
+    pricePerJoule: 0.15
+  - type: PowerCell
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 200
+    intensitySlope: 1.5
+  - type: Sprite
+    sprite: Objects/Power/power_cells.rsi
+  - type: SolutionContainerManager
+    solutions:
+      battery:
+        maxVol: 5
+  - type: InjectableSolution
+    solution: battery
+  - type: DrawableSolution
+    solution: battery
+  - type: Tag
+    tags:
+      - MilitaryPowerCell
+  - type: Appearance
+  - type: PowerCellVisuals
+  - type: Riggable
+  - type: HitscanBatteryAmmoProvider
+    proto: SmallRedLaser
+    fireCost: 50
+  - type: PhysicalComposition #Goobstation - Recycle update
+    materialComposition:
+      Plastic: 37
+      Steel: 50
+      Glass: 100
+      Gold: 5
+    chemicalComposition:
+      Zinc: 15
+
+- type: entity
+  name: 500J IR SMG cell
+  description: A militarized power cell compatible with SMG scale lasers.
+  id: PowerCellIRSMG
+  suffix: Full
+  parent: BaseMilitaryPowerCell
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "enum.PowerCellVisualLayers.Base" ]
+      state: high
+    - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
+      state: o2
+      shader: unshaded
+  - type: Tag
+    tags:
+      - MilitaryPowerCellSMG
+  - type: Battery
+    maxCharge: 1500
+    startingCharge: 1500
+  - type: HitscanBatteryAmmoProvider
+    proto: SmallRedLaser
+    fireCost: 50
+
+- type: entity
+  name: 500J x-ray SMG cell
+  description: A militarized power cell compatible with SMG scale lasers that fires x-rays.
+  id: PowerCellXraySMG
+  suffix: Full
+  parent: BaseMilitaryPowerCell
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "enum.PowerCellVisualLayers.Base" ]
+      state: high
+    - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
+      state: o2
+      shader: unshaded
+  - type: Tag
+    tags:
+      - MilitaryPowerCellSMG
+  - type: Battery
+    maxCharge: 1500
+    startingCharge: 1500
+  - type: HitscanBatteryAmmoProvider
+    proto: SmallXrayLaser
+    fireCost: 50
+
+- type: entity
+  name: 500J overclocked SMG cell
+  description: A militarized power cell compatible with SMG scale lasers that has been overclocked.
+  id: PowerCellOverchargedSMG
+  suffix: Full
+  parent: BaseMilitaryPowerCell
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "enum.PowerCellVisualLayers.Base" ]
+      state: high
+    - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
+      state: o2
+      shader: unshaded
+  - type: Tag
+    tags:
+      - MilitaryPowerCellSMG
+  - type: Battery
+    maxCharge: 1500
+    startingCharge: 1500
+  - type: HitscanBatteryAmmoProvider
+    proto: SmallOverchargedLaser
+    fireCost: 100
+
+- type: entity
+  name: 500J pulse SMG cell
+  description: A militarized power cell compatible with SMG scale lasers that fires pulse beams.
+  id: PowerCellPulseSMG
+  suffix: Full
+  parent: BaseMilitaryPowerCell
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "enum.PowerCellVisualLayers.Base" ]
+      state: high
+    - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
+      state: o2
+      shader: unshaded
+  - type: Tag
+    tags:
+      - MilitaryPowerCellSMG
+  - type: Battery
+    maxCharge: 1500
+    startingCharge: 1500
+  - type: HitscanBatteryAmmoProvider
+    proto: SmallPulseLaser
+    fireCost: 50
