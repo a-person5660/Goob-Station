@@ -37,10 +37,10 @@
     spreadMultiplier: 1.6
 
 - type: entity
-  name: SMG
+  name: Fall Laser SMG
   parent: [ BaseWeaponMilitaryPowerCell, BaseSecurityContraband ]
   id: WeaponLaserCellTest
-  description: power cell lasers test bed
+  description: A Focused Ablation Low-energy Laser (FALL), it's compatible with specialized 500J power cells.
   components:
   - type: Gun
     minAngle: 2
@@ -64,16 +64,14 @@
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
-    - state: mag-4
+    - state: mag-0
       map: ["enum.GunVisualLayers.Mag"]
   - type: Item
-    sprite: Objects/Weapons/Guns/Battery/svalinn.rsi
-    layers:
-    - state: base
-    map: ["enum.GunVisualLayers.Base"]
+    sprite: _Goobstation/Objects/Weapons/Guns/Battery/cell_smg.rsi
   - type: MagazineVisuals
     magState: mag
     steps: 5
+    zeroVisible: true
   - type: Multishot
     spreadMultiplier: 1.6
   - type: PhysicalComposition
@@ -84,8 +82,8 @@
 - type: entity
   id: WeaponLaserBackpack
   parent: [ BaseItem, BaseSecurityContraband ]
-  name: laser machine gun
-  description: A high-powered laser machine gun.
+  name: Halley laser LMG
+  description: A high-powered laser LMG, requires a charged halley power bank to operate.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Basic/spraynozzle.rsi
@@ -118,8 +116,8 @@
 - type: entity
   parent: Clothing
   id: ClothingBackpackLaserPowerBank
-  name: backpack power bank
-  description: Holds a large amount of power.
+  name: Halley Power bank
+  description: Holds a large amount of power for the Halley LMG.
   components:
   - type: Tag
     tags:
