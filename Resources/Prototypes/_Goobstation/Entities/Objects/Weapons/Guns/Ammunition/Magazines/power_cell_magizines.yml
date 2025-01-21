@@ -62,7 +62,7 @@
     startingCharge: 1500
   - type: HitscanBatteryAmmoProvider
     proto: SmallRedLaser
-    fireCost: 50
+    fireCost: 25
 
 - type: entity
   name: 500J x-ray SMG cell
@@ -86,7 +86,7 @@
     startingCharge: 1500
   - type: HitscanBatteryAmmoProvider
     proto: SmallXrayLaser
-    fireCost: 50
+    fireCost: 25
 
 - type: entity
   name: 500J overclocked SMG cell
@@ -110,7 +110,7 @@
     startingCharge: 1500
   - type: HitscanBatteryAmmoProvider
     proto: SmallOverchargedLaser
-    fireCost: 100
+    fireCost: 50
 
 - type: entity
   name: 500J pulse SMG cell
@@ -134,4 +134,4 @@
     startingCharge: 1500
   - type: HitscanBatteryAmmoProvider
     proto: SmallPulseLaser
-    fireCost: 50
+    fireCost: 25

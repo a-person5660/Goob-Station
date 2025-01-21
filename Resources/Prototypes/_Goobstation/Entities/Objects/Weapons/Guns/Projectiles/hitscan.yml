@@ -2,7 +2,7 @@
   id: SmallRedLaser
   damage:
     types:
-      Heat: 8
+      Heat: 5
   muzzleFlash:
     sprite: _Goobstation\Objects\Weapons\Guns\Projectiles\small_laser.rsi
     state: muzzle_beam_light
@@ -18,7 +18,7 @@
   damage:
     types:
       Heat: 4
-      Ion: 8
+      Ion: 5
   muzzleFlash:
     sprite: _Goobstation\Objects\Weapons\Guns\Projectiles\small_laser.rsi
     state: muzzle_beam_light_ion
@@ -33,8 +33,8 @@
   id: SmallXrayLaser
   damage:
     types:
-      Heat: 4
-      Radiation: 4
+      Heat: 2
+      Radiation: 3
   muzzleFlash:
     sprite: _Goobstation\Objects\Weapons\Guns\Projectiles\small_laser.rsi
     state: muzzle_beam_light_xray
@@ -49,7 +49,7 @@
   id: SmallOverchargedLaser
   damage:
     types:
-      Heat: 12
+      Heat: 8
   muzzleFlash:
     sprite: _Goobstation\Objects\Weapons\Guns\Projectiles\small_laser.rsi
     state: muzzle_beam_light_overcharged
@@ -64,7 +64,7 @@
   id: SmallPulseLaser
   damage:
     types:
-      Heat: 18
+      Heat: 10
   muzzleFlash:
     sprite: _Goobstation\Objects\Weapons\Guns\Projectiles\small_laser.rsi
     state: muzzle_beam_light_pulse
@@ -79,7 +79,7 @@
   id: SmallRedLaserLMG
   damage:
     types:
-      Heat: 10
+      Heat: 8
   muzzleFlash:
     sprite: _Goobstation\Objects\Weapons\Guns\Projectiles\small_laser.rsi
     state: muzzle_beam_light

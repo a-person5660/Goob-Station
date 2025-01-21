@@ -47,10 +47,12 @@
     maxAngle: 15
     angleIncrease: 3
     angleDecay: 16
-    fireRate: 9
+    fireRate: 15
     selectedMode: FullAuto
     availableModes:
     - FullAuto
+    soundGunshot:
+      path: /Audio/_Goobstation/Weapons/Guns/Gunshots/very_light_laser.ogg
   - type: ItemSlots
     slots:
       gun_magazine:
@@ -94,12 +96,12 @@
     maxAngle: 10
     angleIncrease: 3
     angleDecay: 16
-    fireRate: 8
+    fireRate: 10
     selectedMode: FullAuto
     availableModes:
     - FullAuto
     soundGunshot:
-      path: /Audio/Weapons/Guns/Gunshots/laser.ogg
+      path: /Audio/_Goobstation/Weapons/Guns/Gunshots/heavy_laser.ogg
   - type: Appearance
   - type: ClothingSlotAmmoProvider
     targetSlot: BACK
