@@ -297,3 +297,30 @@
   components:
   - type: BallisticAmmoProvider
     proto: ShellShotgunImprovised
+
+- type: entity
+  name: PTA 7AX 4g
+  parent: [BaseWeaponShotgun, BaseGunWieldable]
+  id: WeaponShotgunKS23
+  description: A oversized shotgun. Packs devastating 4 Gauge punches. Developed as port of Pang Tai's elite mercenary package.
+  comments:
+  - type: Sprite
+    Sprites: _Crescent/Objects/Weapons/ks23.rsi
+  - type: Clothing
+    Sprites: _Crescent/Objects/Weapons/ks23worn.rsi
+  - type: Item
+    Sprites: _Crescent/Objects/Weapons/ks23.rsi
+  - type: GunRequiresWield
+  - type: Gun
+    firerate: 1.5
+    soundGunshot:
+    selectedMode: SemiAuto
+    avalableModes:
+    - SemiAuto
+    - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+      - ShellShotgun4g
+    capacity: 4
+    proto: ShellShotgun4g
+  - type: ItemSlots

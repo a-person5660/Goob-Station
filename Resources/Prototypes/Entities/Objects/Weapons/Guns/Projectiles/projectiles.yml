@@ -647,17 +647,24 @@
     sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
     layers:
       - state: frag
-  - type: ExplodeOnTrigger
-  - type: Explosive
-    explosionType: Default
-    maxIntensity: 40
-    intensitySlope: 6
-    totalIntensity: 200
-    maxTileBreak: 1
+  # - type: ExplodeOnTrigger
+  # - type: Explosive
+  #   explosionType: Default
+  #   maxIntensity: 40
+  #   intensitySlope: 6
+  #   totalIntensity: 200
+  #   maxTileBreak: 1
   - type: PointLight
     radius: 3.5
     color: orange
     energy: 0.5
+  - type: HeatSeeking
+    rotationSpeed: 100
+    acceleration: 5
+    defaultSeekingRange: 100
+    gain: 500
+
+
 
 - type: entity
   id: BulletWeakRocket
