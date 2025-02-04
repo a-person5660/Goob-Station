@@ -662,7 +662,7 @@
     rotationSpeed: 100
     acceleration: 5
     defaultSeekingRange: 100
-    gain: 500
+    gain: 5
 
 
 

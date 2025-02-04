@@ -40,5 +40,5 @@ public sealed partial class HeatSeekingComponent : Component
     public float Acceleration = 200f;
 
     [DataField]
-    public float Gain = 500f;
+    public float Gain = 5f;
 }
