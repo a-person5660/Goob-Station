@@ -13,6 +13,12 @@ namespace Content.Server._FTL.HeatSeeking;
 /// <summary>
 /// This handles...
 /// </summary>
+
+public enum GuidanceAlgorithm
+{
+    PredictiveGuidance,
+    PurePursuit
+}
 public sealed class HeatSeekingSystem : EntitySystem
 {
     [Dependency] private readonly SharedTransformSystem _transform = default!;
@@ -31,9 +37,10 @@ public sealed class HeatSeekingSystem : EntitySystem
         {
             if (comp.TargetEntity.HasValue) // if the missile has a target, run its guidance algorithm
             {
-                if (comp.GuidanceAlgorithm == "PredictiveGuidance") { PredictiveGuidance(uid, comp, xform, frameTime); }
-                else if (comp.GuidanceAlgorithm == "PurePursuit") { PurePursuit(uid, comp, xform, frameTime); }
-                else { PredictiveGuidance(uid, comp, xform, frameTime); } // if yaml is invalid, default to Predictive Guidance
+                GuidanceAlgorithm guideAlg = comp.GuidanceAlgorithm;
+                if (comp.GuidanceAlgorithm == GuidanceAlgorithm.PredictiveGuidance) { PredictiveGuidance(uid, comp, xform, frameTime); }
+                else if (comp.GuidanceAlgorithm == GuidanceAlgorithm.PurePursuit) { PurePursuit(uid, comp, xform, frameTime); }
+                else { PredictiveGuidance(uid, comp, xform, frameTime); } // if something is invalid, default to Predictive Guidance
             }
             else
             {
