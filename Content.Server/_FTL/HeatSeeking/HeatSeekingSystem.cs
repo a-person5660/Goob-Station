@@ -18,7 +18,6 @@ public sealed class HeatSeekingSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly RotateToFaceSystem _rotate = default!;
     [Dependency] private readonly PhysicsSystem _physics = default!;
-    Angle oldAngle;
     float oldDistance;
     Vector2 oldPosition;
     float timeToImpact;

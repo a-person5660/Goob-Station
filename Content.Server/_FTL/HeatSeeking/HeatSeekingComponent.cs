@@ -23,7 +23,7 @@ public sealed partial class HeatSeekingComponent : Component
 
     /// <summary>
     /// What guidance algorithm should this missile use?
-    /// Options are "ProportionalNavigation" and "PurePursuit".
+    /// Options are "PredictiveGuidance" and "PurePursuit".
     /// Defaults to "PredictiveGuidance".
     /// </summary>
     [DataField]
