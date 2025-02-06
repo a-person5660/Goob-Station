@@ -647,22 +647,27 @@
     sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
     layers:
       - state: frag
-  # - type: ExplodeOnTrigger
-  # - type: Explosive
-  #   explosionType: Default
-  #   maxIntensity: 40
-  #   intensitySlope: 6
-  #   totalIntensity: 200
-  #   maxTileBreak: 1
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 1
+    intensitySlope: 1
+    totalIntensity: 1
+    maxTileBreak: 0
   - type: PointLight
-    radius: 3.5
+    radius: 15
     color: orange
-    energy: 0.5
+    energy: 2
   - type: HeatSeeking
-    rotationSpeed: 100
-    acceleration: 5
-    defaultSeekingRange: 100
-    gain: 5
+    rotationSpeed: 500
+    acceleration: 60 # m/s/s
+    topSpeed: 60 # m/s
+    initialSpeed: 5 # m/s (speed at launch)
+    defaultSeekingRange: 1000 # distance in meters
+    guidanceAlgorithm: ProportionalNavigation # Options are "ProportionalNavigation", "PredictiveGuidance" and "PurePursuit".
+    gain: 5 # the influence the guidance has on the rocket, used only in "ProportionalNavigation".
+  - type: TimedDespawn
+    lifetime: 15
 
 
 
