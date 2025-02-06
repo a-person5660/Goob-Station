@@ -664,8 +664,7 @@
     topSpeed: 60 # m/s
     initialSpeed: 5 # m/s (speed at launch)
     defaultSeekingRange: 1000 # distance in meters
-    guidanceAlgorithm: ProportionalNavigation # Options are "ProportionalNavigation", "PredictiveGuidance" and "PurePursuit".
-    gain: 5 # the influence the guidance has on the rocket, used only in "ProportionalNavigation".
+    guidanceAlgorithm: ProportionalNavigation # Options are "PredictiveGuidance" and "PurePursuit".
   - type: TimedDespawn
     lifetime: 15
 

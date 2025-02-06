@@ -23,7 +23,7 @@ public sealed partial class HeatSeekingComponent : Component
 
     /// <summary>
     /// What guidance algorithm should this missile use?
-    /// Options are "ProportionalNavigation", "PredictiveGuidance" and "PurePursuit".
+    /// Options are "ProportionalNavigation" and "PurePursuit".
     /// Defaults to "PredictiveGuidance".
     /// </summary>
     [DataField]
@@ -58,13 +58,6 @@ public sealed partial class HeatSeekingComponent : Component
     /// </summary>
     [DataField]
     public float Speed;
-
-    /// <summary>
-    /// How much of an impact the guidance has, higher speed missiles should have lower gain.
-    /// Defaults to 25.
-    /// </summary>
-    [DataField]
-    public float Gain = 5f;
 
     /// <summary>
     /// What is the missiles field of view in degrees?

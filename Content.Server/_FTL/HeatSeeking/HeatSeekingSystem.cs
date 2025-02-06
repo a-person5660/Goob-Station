@@ -19,9 +19,7 @@ public sealed class HeatSeekingSystem : EntitySystem
     [Dependency] private readonly RotateToFaceSystem _rotate = default!;
     [Dependency] private readonly PhysicsSystem _physics = default!;
     Angle oldAngle;
-    Angle deltaAngle;
     float oldDistance;
-    float deltaDistance;
     Vector2 oldPosition;
     float timeToImpact;
     public override void Update(float frameTime)
@@ -33,7 +31,6 @@ public sealed class HeatSeekingSystem : EntitySystem
         {
             if (comp.TargetEntity.HasValue) // if the missile has a target, run its guidance algorithm
             {
-                //if (comp.GuidanceAlgorithm == "ProportionalNavigation") { ProportionalNavigation(uid, comp, xform, frameTime); } // doesnt work currnetly
                 if (comp.GuidanceAlgorithm == "PredictiveGuidance") { PredictiveGuidance(uid, comp, xform, frameTime); }
                 else if (comp.GuidanceAlgorithm == "PurePursuit") { PurePursuit(uid, comp, xform, frameTime); }
                 else { PredictiveGuidance(uid, comp, xform, frameTime); } // if yaml is invalid, default to Predictive Guidance
@@ -120,39 +117,6 @@ public sealed class HeatSeekingSystem : EntitySystem
             oldDistance = distance;
         }
     }
-
-    // doesnt work with multiple missiles, can be fixed later
-    // public void ProportionalNavigation(EntityUid uid, HeatSeekingComponent comp, TransformComponent xform, float frameTime) // Proportional Navigation, leads the target.
-    // {
-    //     if (comp.TargetEntity.HasValue)
-    //     {
-    //         var EntXform = Transform(comp.TargetEntity.Value); // get target transform
-    //         var originalAngle = _transform.GetWorldRotation(xform); // get current angle of missile
-    //         var distance = Vector2.Distance(
-    //             _transform.ToMapCoordinates(xform.Coordinates).Position,
-    //             _transform.ToMapCoordinates(EntXform.Coordinates).Position
-    //         ); // current distance from target
-
-    //         var angle = (
-    //             _transform.ToMapCoordinates(EntXform.Coordinates).Position -
-    //             _transform.ToMapCoordinates(xform.Coordinates).Position
-    //         ).ToWorldAngle(); // current angle towards target
-
-    //         deltaDistance = oldDistance - distance; // change in distance from the target since the last frame
-    //         deltaAngle = angle - oldAngle; // how far the target has moved across the view of the missile since the last frame
-    //         Angle PN = comp.Gain * deltaDistance * deltaAngle; // the deviation from the target that the guidance algorithm wants to maintain
-    //         Angle targetAngle = angle + PN; // the angle the missile should aim for
-
-    //         if (comp.Speed < comp.InitialSpeed) { comp.Speed = comp.InitialSpeed; } // start at initial speed
-    //         if (comp.Speed <= comp.TopSpeed) { comp.Speed += comp.Acceleration * frameTime; } else { comp.Speed = comp.TopSpeed; } // accelerate to top speed once target is locked
-    //         _rotate.TryRotateTo(uid, targetAngle, frameTime, comp.WeaponArc, comp.RotationSpeed?.Theta ?? double.MaxValue, xform); // rotate towards target angle
-    //         _physics.SetLinearVelocity(uid, _transform.GetWorldRotation(xform).ToWorldVec() * comp.Speed); // move missile forward at current speed
-
-    //         oldDistance = distance;
-    //         oldAngle = angle;
-    //         return;
-    //     }
-    // }
 
     public void PurePursuit(EntityUid uid, HeatSeekingComponent comp, TransformComponent xform, float frameTime) // Pure Pursuit, points directly at target.
     {
