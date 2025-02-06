@@ -659,9 +659,9 @@
     color: orange
     energy: 2
   - type: HeatSeeking
-    rotationSpeed: 500
-    acceleration: 60 # m/s/s
-    topSpeed: 60 # m/s
+    rotationSpeed: 150
+    acceleration: 30 # m/s/s
+    topSpeed: 30 # m/s
     initialSpeed: 5 # m/s (speed at launch)
     defaultSeekingRange: 1000 # distance in meters
     guidanceAlgorithm: ProportionalNavigation # Options are "PredictiveGuidance" and "PurePursuit".

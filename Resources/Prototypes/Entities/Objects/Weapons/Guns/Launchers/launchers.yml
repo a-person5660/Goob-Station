@@ -70,7 +70,7 @@
   - type: Clothing
     sprite: Objects/Weapons/Guns/Launchers/rocket.rsi
   - type: Gun
-    fireRate: 0.5
+    fireRate: 10
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/rpgfire.ogg
     projectileSpeed: 10
@@ -79,7 +79,7 @@
       tags:
         - CartridgeRocket
     proto: CartridgeRocket
-    capacity: 1
+    capacity: 1000
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
   - type: MagazineVisuals
