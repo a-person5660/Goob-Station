@@ -23,11 +23,11 @@ public sealed partial class HeatSeekingComponent : Component
 
     /// <summary>
     /// What guidance algorithm should this missile use?
-    /// Options are "ProportionalNavigation" and "PurePursuit".
+    /// Options are "PredictiveGuidance" and "PurePursuit".
     /// Defaults to "PredictiveGuidance".
     /// </summary>
     [DataField]
-    public string GuidanceAlgorithm = "PredictiveGuidance";
+    public enum GuidanceAlgorithm;
 
     /// <summary>
     /// What is this entity targeting?
