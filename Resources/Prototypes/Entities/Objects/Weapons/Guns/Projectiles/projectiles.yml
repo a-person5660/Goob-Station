@@ -650,21 +650,26 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 1
-    intensitySlope: 1
-    totalIntensity: 1
-    maxTileBreak: 0
+    maxIntensity: 400
+    intensitySlope: 50
+    totalIntensity: 80
+    maxTileBreak: 4
   - type: PointLight
-    radius: 15
+    radius: 3.5
     color: orange
-    energy: 2
+    energy: 0.5
+  - type: ProjectileIFF
   - type: HeatSeeking
-    rotationSpeed: 150
-    acceleration: 30 # m/s/s
-    topSpeed: 30 # m/s
-    initialSpeed: 5 # m/s (speed at launch)
-    defaultSeekingRange: 1000 # distance in meters
-    guidanceAlgorithm: ProportionalNavigation # Options are "PredictiveGuidance" and "PurePursuit".
+    rotationSpeed: 110
+    acceleration: 35 # m/s/s
+    topSpeed: 40 # m/s
+    initialSpeed: 10 # m/s (speed at launch)
+    defaultSeekingRange: 400 # distance in meters
+    guidanceAlgorithm: PredictiveGuidance # Options are "PredictiveGuidance" and "PurePursuit".
+  - type: PointLight
+    radius: 3.5
+    color: orange
+    energy: 0.5
   - type: TimedDespawn
     lifetime: 15
 
