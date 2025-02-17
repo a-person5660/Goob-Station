@@ -659,7 +659,7 @@
     topSpeed: 75
     initialSpeed: 25
     FOV: 90
-    defaultSeekingRange: 300
+    seekRange: 300
     guidanceAlgorithm: PredictiveGuidance
   - type: PointLight
     radius: 3.5

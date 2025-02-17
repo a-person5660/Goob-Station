@@ -8,7 +8,7 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Physics;
 using Robust.Shared.Random;
 
-namespace Content.Server._FTL.HeatSeeking;
+namespace Content.Server._Hullrot.HeatSeeking;
 
 /// <summary>
 /// This handles...
@@ -18,9 +18,6 @@ public sealed class HeatSeekingSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly RotateToFaceSystem _rotate = default!;
     [Dependency] private readonly PhysicsSystem _physics = default!;
-    float oldDistance;
-    Vector2 oldPosition;
-    float timeToImpact;
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
@@ -64,7 +61,7 @@ public sealed class HeatSeekingSystem : EntitySystem
             {
                 continue;
             }
-            if (distance > component.DefaultSeekingRange) // if target is out of range, skip it.
+            if (distance > component.SeekRange) // if target is out of range, skip it.
             {
                 continue;
             }
@@ -95,25 +92,29 @@ public sealed class HeatSeekingSystem : EntitySystem
     {
         if (comp.TargetEntity.HasValue)
         {
+            float oldDistance = comp.oldDistance;
+            Vector2 oldPosition = comp.oldPosition;
             var EntXform = Transform(comp.TargetEntity.Value); // get target transform
-            var originalAngle = _transform.GetWorldRotation(xform); // get current angle of missile
+            //var originalAngle = _transform.GetWorldRotation(xform); // get current angle of missile
             var distance = Vector2.Distance(
                 _transform.ToMapCoordinates(xform.Coordinates).Position,
                 _transform.ToMapCoordinates(EntXform.Coordinates).Position
             ); // current distance from target
 
             var targetVelocity = _transform.ToMapCoordinates(EntXform.Coordinates).Position - oldPosition; // get target velocity
-            timeToImpact = distance / (oldDistance - distance); // time it will take for the missile to reach the target
+            float timeToImpact = distance / (oldDistance - distance); // time it will take for the missile to reach the target
             if (timeToImpact < 0.1) { timeToImpact = 0.1f; } // prevent negative time to impact, that messes up guidance
             var predictedPosition = _transform.ToMapCoordinates(EntXform.Coordinates).Position + (targetVelocity * timeToImpact); // predict target position at impact time
 
             Angle targetAngle = (predictedPosition - _transform.ToMapCoordinates(xform.Coordinates).Position).ToWorldAngle(); // the angle the missile will try to face
 
+            if (comp.Speed < comp.InitialSpeed) { comp.Speed = comp.InitialSpeed; } // start at initial speed
+            if (comp.Speed < comp.TopSpeed) { comp.Speed += comp.Acceleration * frameTime; } else { comp.Speed = comp.TopSpeed; } // accelerate to top speed once target is locked
             _rotate.TryRotateTo(uid, targetAngle, frameTime, comp.WeaponArc, comp.RotationSpeed?.Theta ?? double.MaxValue, xform); // rotate towards target angle
             _physics.SetLinearVelocity(uid, _transform.GetWorldRotation(xform).ToWorldVec() * comp.Speed); // move missile forward at current speed
 
-            oldPosition = _transform.ToMapCoordinates(EntXform.Coordinates).Position;
-            oldDistance = distance;
+            comp.oldPosition = _transform.ToMapCoordinates(EntXform.Coordinates).Position;
+            comp.oldDistance = distance;
         }
     }
 
@@ -129,6 +130,8 @@ public sealed class HeatSeekingSystem : EntitySystem
                 _transform.ToMapCoordinates(xform.Coordinates).Position
             ).ToWorldAngle(); // current angle towards target
 
+            if (comp.Speed < comp.InitialSpeed) { comp.Speed = comp.InitialSpeed; } // start at initial speed
+            if (comp.Speed <= comp.TopSpeed) { comp.Speed += comp.Acceleration * frameTime; } else { comp.Speed = comp.TopSpeed; } // accelerate to top speed once target is locked
             _rotate.TryRotateTo(uid, angle, frameTime, comp.WeaponArc, comp.RotationSpeed?.Theta ?? double.MaxValue, xform); // rotate towards target angle
             _physics.SetLinearVelocity(uid, _transform.GetWorldRotation(xform).ToWorldVec() * comp.Speed); // move missile forward at current speed
         }
