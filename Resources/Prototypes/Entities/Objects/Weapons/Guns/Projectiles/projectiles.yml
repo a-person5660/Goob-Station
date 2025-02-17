@@ -657,8 +657,8 @@
     rotationSpeed: 75
     acceleration: 25 # you ever see an igla fire?
     topSpeed: 75
-    initialSpeed: 25
-    FOV: 90
+    initialSpeed: 5
+    FOV: 140
     seekRange: 300
     guidanceAlgorithm: PredictiveGuidance
   - type: PointLight

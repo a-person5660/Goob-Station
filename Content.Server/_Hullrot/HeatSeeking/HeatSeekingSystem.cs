@@ -27,10 +27,11 @@ public sealed class HeatSeekingSystem : EntitySystem
         {
             if (comp.Speed < comp.InitialSpeed) { comp.Speed = comp.InitialSpeed; } // start at initial speed
             if (comp.Speed < comp.TopSpeed) { comp.Speed += comp.Acceleration * frameTime; } else { comp.Speed = comp.TopSpeed; } // accelerate to top speed once target is locked
+            _physics.SetLinearVelocity(uid, _transform.GetWorldRotation(xform).ToWorldVec() * comp.Speed); // move missile forward at current speed
             if (comp.TargetEntity.HasValue) // if the missile has a target, run its guidance algorithm
             {
-                if (comp.GuidanceAlgorithm == "PredictiveGuidance") { PredictiveGuidance(uid, comp, xform, frameTime); }
-                else if (comp.GuidanceAlgorithm == "PurePursuit") { PurePursuit(uid, comp, xform, frameTime); }
+                if ((comp.GuidanceAlgorithm & GuidanceType.PredictiveGuidance) != 0) { PredictiveGuidance(uid, comp, xform, frameTime); }
+                else if ((comp.GuidanceAlgorithm & GuidanceType.PurePursuit) != 0 ){ PurePursuit(uid, comp, xform, frameTime); }
                 else { PredictiveGuidance(uid, comp, xform, frameTime); } // if yaml is invalid, default to Predictive Guidance
             }
             else
@@ -108,10 +109,7 @@ public sealed class HeatSeekingSystem : EntitySystem
 
             Angle targetAngle = (predictedPosition - _transform.ToMapCoordinates(xform.Coordinates).Position).ToWorldAngle(); // the angle the missile will try to face
 
-            if (comp.Speed < comp.InitialSpeed) { comp.Speed = comp.InitialSpeed; } // start at initial speed
-            if (comp.Speed < comp.TopSpeed) { comp.Speed += comp.Acceleration * frameTime; } else { comp.Speed = comp.TopSpeed; } // accelerate to top speed once target is locked
             _rotate.TryRotateTo(uid, targetAngle, frameTime, comp.WeaponArc, comp.RotationSpeed?.Theta ?? double.MaxValue, xform); // rotate towards target angle
-            _physics.SetLinearVelocity(uid, _transform.GetWorldRotation(xform).ToWorldVec() * comp.Speed); // move missile forward at current speed
 
             comp.oldPosition = _transform.ToMapCoordinates(EntXform.Coordinates).Position;
             comp.oldDistance = distance;
@@ -130,10 +128,7 @@ public sealed class HeatSeekingSystem : EntitySystem
                 _transform.ToMapCoordinates(xform.Coordinates).Position
             ).ToWorldAngle(); // current angle towards target
 
-            if (comp.Speed < comp.InitialSpeed) { comp.Speed = comp.InitialSpeed; } // start at initial speed
-            if (comp.Speed <= comp.TopSpeed) { comp.Speed += comp.Acceleration * frameTime; } else { comp.Speed = comp.TopSpeed; } // accelerate to top speed once target is locked
             _rotate.TryRotateTo(uid, angle, frameTime, comp.WeaponArc, comp.RotationSpeed?.Theta ?? double.MaxValue, xform); // rotate towards target angle
-            _physics.SetLinearVelocity(uid, _transform.GetWorldRotation(xform).ToWorldVec() * comp.Speed); // move missile forward at current speed
         }
     }
 }
