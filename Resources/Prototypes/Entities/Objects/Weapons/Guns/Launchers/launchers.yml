@@ -73,7 +73,7 @@
     fireRate: 10
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/rpgfire.ogg
-    projectileSpeed: 10
+    projectileSpeed: 20
   - type: BallisticAmmoProvider
     whitelist:
       tags:

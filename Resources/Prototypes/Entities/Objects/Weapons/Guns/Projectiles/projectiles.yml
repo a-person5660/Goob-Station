@@ -650,22 +650,17 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 400
-    intensitySlope: 50
-    totalIntensity: 80
-    maxTileBreak: 4
-  - type: PointLight
-    radius: 3.5
-    color: orange
-    energy: 0.5
-  - type: ProjectileIFF
+    maxIntensity: 50
+    intensitySlope: 20
+    totalIntensity: 300
   - type: HeatSeeking
-    rotationSpeed: 110
-    acceleration: 35 # m/s/s
-    topSpeed: 40 # m/s
-    initialSpeed: 10 # m/s (speed at launch)
-    defaultSeekingRange: 400 # distance in meters
-    guidanceAlgorithm: PredictiveGuidance # Options are "PredictiveGuidance" and "PurePursuit".
+    rotationSpeed: 75
+    acceleration: 25 # you ever see an igla fire?
+    topSpeed: 75
+    initialSpeed: 25
+    FOV: 90
+    defaultSeekingRange: 300
+    guidanceAlgorithm: PredictiveGuidance
   - type: PointLight
     radius: 3.5
     color: orange
