@@ -31,7 +31,7 @@ public sealed class HeatSeekingSystem : EntitySystem
             if (comp.TargetEntity.HasValue) // if the missile has a target, run its guidance algorithm
             {
                 if ((comp.GuidanceAlgorithm & GuidanceType.PredictiveGuidance) != 0) { PredictiveGuidance(uid, comp, xform, frameTime); }
-                else if ((comp.GuidanceAlgorithm & GuidanceType.PurePursuit) != 0 ){ PurePursuit(uid, comp, xform, frameTime); }
+                else if ((comp.GuidanceAlgorithm & GuidanceType.PurePursuit) != 0) { PurePursuit(uid, comp, xform, frameTime); }
                 else { PredictiveGuidance(uid, comp, xform, frameTime); } // if yaml is invalid, default to Predictive Guidance
             }
             else
@@ -43,9 +43,9 @@ public sealed class HeatSeekingSystem : EntitySystem
 
     public void GetNewTarget(EntityUid uid, HeatSeekingComponent component, TransformComponent transform) // Get the closest valid target
     {
-        var closestDistance = float.MaxValue;
-        EntityUid? closestGrid = null;
-        var shipQuery = EntityQueryEnumerator<ShuttleConsoleComponent, TransformComponent>(); // get all shuttle consoles
+        Angle closestAngle = 4;
+        EntityUid? bestGrid = null;
+        var shipQuery = EntityQueryEnumerator<ThrusterComponent, TransformComponent>(); // get all shuttle consoles
         while (shipQuery.MoveNext(out var shipUid, out var shipComp, out var shipXform)) // go through each grid with a shuttle console to find the closest valid target
         {
             var angle = (
@@ -70,23 +70,26 @@ public sealed class HeatSeekingSystem : EntitySystem
             if (TryComp<ProjectileComponent>(uid, out var projectile) && TryComp<TransformComponent>(projectile.Shooter, out var shooterTransform)) // get the shooter of the missile
             {
                 var shooterGridUid = shooterTransform.GridUid;
-                if (TryComp<TransformComponent>(shipXform.GridUid, out var hitTransform))
+                if (TryComp<TransformComponent>(shipUid, out var hitTransform) && shooterGridUid == hitTransform.GridUid)
                 {
-                    if (shooterGridUid == hitTransform.GridUid) // if target is the shooter of the missile, skip it.
-                    {
-                        continue;
-                    }
+                    continue;
                 }
             }
-            if (closestDistance > distance) // if this target is the closest target checked so far, save it.
+            Console.WriteLine($"target: {shipUid}");
+            Console.WriteLine($"weight: {Math.Abs(angle - _transform.GetWorldRotation(transform)) + distance / 100}");
+            Console.WriteLine($"angle: {angle}");
+            Console.WriteLine($"missile angle: {_transform.GetWorldRotation(transform)}");
+            Console.WriteLine($"distance: {distance}");
+
+            if (closestAngle > Math.Abs(angle - _transform.GetWorldRotation(transform)) + distance / 100) // if this target is the best target checked so far, save it.
             {
-                closestDistance = distance;
-                closestGrid = shipXform.GridUid;
+                closestAngle = Math.Abs(angle - _transform.GetWorldRotation(transform) + distance / 100);
+                bestGrid = shipUid;
             }
         }
-        if (closestGrid.HasValue) // after checking all valid targets, pick the closest one.
+        if (bestGrid.HasValue) // after checking all valid targets, pick the best one.
         {
-            component.TargetEntity = closestGrid;
+            component.TargetEntity = bestGrid;
         }
     }
     public void PredictiveGuidance(EntityUid uid, HeatSeekingComponent comp, TransformComponent xform, float frameTime) // Predictive Guidance, predicts targets position at impact time.
@@ -96,7 +99,6 @@ public sealed class HeatSeekingSystem : EntitySystem
             float oldDistance = comp.oldDistance;
             Vector2 oldPosition = comp.oldPosition;
             var EntXform = Transform(comp.TargetEntity.Value); // get target transform
-            //var originalAngle = _transform.GetWorldRotation(xform); // get current angle of missile
             var distance = Vector2.Distance(
                 _transform.ToMapCoordinates(xform.Coordinates).Position,
                 _transform.ToMapCoordinates(EntXform.Coordinates).Position

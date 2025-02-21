@@ -648,17 +648,17 @@
     layers:
       - state: frag
   - type: ExplodeOnTrigger
-  - type: Explosive
-    explosionType: Default
-    maxIntensity: 50
-    intensitySlope: 20
-    totalIntensity: 300
+  # - type: Explosive
+  #   explosionType: Default
+  #   maxIntensity: 50
+  #   intensitySlope: 20
+  #   totalIntensity: 300
   - type: HeatSeeking
     rotationSpeed: 75
     acceleration: 25 # you ever see an igla fire?
     topSpeed: 75
     initialSpeed: 5
-    FOV: 140
+    FOV: 60
     seekRange: 300
     guidanceAlgorithm: PredictiveGuidance
   - type: PointLight
